@@ -2,18 +2,18 @@
 echo "Hello, $(whoami)!"
 echo "We Are Going To Install SNMP Server and Enable Proxmox Stats Collection For LibreNMS !"
 echo 'Shall We Begin ? Type "y" to Confirm !'
-read "age"
-if [ $age == "y" ]
+read "confirm"
+if [ $confirm == "y" ]
 then
-echo ' Ok Here We Go ...'
+echo 'Ok Here We Go ...'
 echo ' '
 apt update
 echo ' '
-echo ' Installing SNMPD...'
+echo 'Installing SNMPD...'
 echo ' '
 apt install snmpd -y
 echo ' '
-echo ' Configuring SNMPD To Connect To VNS NMS'
+echo 'Configuring SNMPD To Connect To LIBRENMS NMS'
 echo ' '
 mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.ori
 
@@ -43,11 +43,11 @@ master          agentx
 
 EOT
 echo ' '
-echo ' DONE , Restarting SNMPD'
+echo 'DONE , Restarting SNMPD'
 echo ' '
 systemctl restart snmpd 
 echo ' '
-echo ' Downloading And Enabling PROXMOX Stats Deamon...'
+echo 'Downloading And Enabling PROXMOX Stats Deamon...'
 echo ' '
 apt install git -y
 cd /opt/
